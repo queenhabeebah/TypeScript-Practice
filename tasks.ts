@@ -1,21 +1,17 @@
-// Task 2
+// Task 3 -- Enums vs Literal Unions
 
-interface User {
-  readonly id: number;
-  email: Required<string>;
-  name?: string;
+enum RoleEnum {
+    admin= 'admin',
+    manager= 'manager',
+    worker= 'worker',
 }
 
-type UserDTO = {
-  readonly id: number;
-  email: Required<string>;
-  name?: string;
-};
+type Role = 'admin' | 'manager' | 'worker'
 
-type rMandatory = Readonly<Required<User>>;
-
-const user:rMandatory = {
-    id: 1,
-    email: "user@email.com",
-    name: 'Habeebah'
+const canManageUsers = (role: Role | RoleEnum) => {
+    console.log(role);
+    
 }
+
+canManageUsers(RoleEnum.admin)
+canManageUsers("manager")
