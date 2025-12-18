@@ -1,23 +1,21 @@
-// Task 1
-interface SuccessResponse<T> {
-  status: "success";
-  data: T;
-}
-
-interface ErrorResponse {
-  status: "error";
-  message: "string";
-}
-
-type ApiResponse<T> = SuccessResponse <T> | ErrorResponse
+// Task 2
 
 interface User {
-    name: string
-    userId: number
+  readonly id: number;
+  email: Required<string>;
+  name?: string;
 }
 
-interface Admin {
-    adminId: number
-}
+type UserDTO = {
+  readonly id: number;
+  email: Required<string>;
+  name?: string;
+};
 
-type AdminUser = User & Admin
+type rMandatory = Readonly<Required<User>>;
+
+const user:rMandatory = {
+    id: 1,
+    email: "user@email.com",
+    name: 'Habeebah'
+}
